@@ -1,0 +1,43 @@
+package com.util;
+
+public class TextUtil {
+    public static void welcome(){
+
+        System.out.println("************************");
+        System.out.println("********先生/女士********");
+        System.out.println("****欢迎使用 ATM取款机****");
+        System.out.println("***********************");
+
+    }
+
+    public static void oneLeveOption(){
+
+        System.out.println("*****************************************");
+        System.out.println("********请输入你想要的操作类型：*********");
+        System.out.println("********1.余额查询        2.取款*********");
+        System.out.println("********3.转账            4.存款*********");
+        System.out.println("********5.退卡                  *********");
+        System.out.println("*****************************************");
+
+    }
+
+   /* private void oneOption (String option) {
+        switch (option) {
+            case "1":
+                System.out.println("余额查询");
+                break;
+            case "2":
+                System.out.println("取款");
+                break;
+            case "3":
+                System.out.println("转账");
+                break;
+            case "4":
+                System.out.println("存款");
+                break;
+            case "5":
+                System.out.println("退卡");
+                break;
+        }
+    }*/
+}

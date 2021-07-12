@@ -1,0 +1,128 @@
+package com.service;
+
+import com.controller.Customer;
+import com.controller.CustomerData;
+import com.util.TextUtil;
+
+import java.util.List;
+import java.util.Scanner;
+
+// 此类是 完成客户的所有业务 （增删改查）
+public class CustomerService {
+    private List<Customer> customerList;
+    private Customer customerNow;
+    private boolean type;
+    //校验 账户密码
+    public void checkPwd(String cardid, String cardpwd) {
+
+        CustomerData customerData = CustomerData.getInstance();
+        customerList = customerData.getCustomerList();
+        // 拿到 card的账户密码进行对比
+        System.out.println("cardid = " + cardid);
+        System.out.println("cardpwd = " + cardpwd);
+
+        for (Customer customer : customerList) {
+            if (customer.getAccount().equals(cardid) && customer.getPassword().equals(cardpwd)) {
+                customerNow = customer;
+                //  账户正确 登陆成功
+                System.out.println("欢迎" + customer.getCname() + "登录请注意安全");
+                TextUtil.oneLeveOption();//界面
+                Scanner scanner = new Scanner(System.in);
+                String option = scanner.nextLine();
+                oneOption(option);
+            }
+
+        }
+    }
+
+    private void oneOption(String option) {
+        switch (option) {
+            case "1":
+                System.out.println("余额查询");
+                // 查询余额
+                doSelectMoney();
+                // 返回到选择界面
+                goOneHome();
+                break;
+            case "2":
+                System.out.println("取款");
+                doGetMoney();
+                goOneHome();
+                break;
+            case "3":
+                System.out.println("转账");
+                goOneHome();
+                break;
+            case "4":
+                doSaveMoney();
+                System.out.println("存款");
+                goOneHome();
+                break;
+            case "5":
+                System.out.println("退卡");
+                outCard();
+                goOneHome();
+                break;
+
+            default:
+                System.out.println("你输入的数字有误");
+                goOneHome();
+                break;
+        }
+    }
+
+    // 返回一级菜单
+    private void goOneHome() {
+        TextUtil.oneLeveOption();
+        Scanner scanner = new Scanner(System.in);
+        String option = scanner.nextLine();
+        System.out.println("option1 = " + option);
+        oneOption(option);  //递归算法
+    }
+
+
+    // 查询余额
+    private void doSelectMoney() {
+        double money = customerNow.getMoney();
+        System.out.println("余额是 " + money);
+    }
+
+    // 取款
+    private void doGetMoney() {
+        Scanner scanner = new Scanner(System.in);
+        double money = scanner.nextDouble();
+        customerNow.setMoney(customerNow.getMoney() - money);
+        System.out.println("你当前的余额为：" + customerNow.getMoney());
+    }
+
+    //  存款
+    private void doSaveMoney() {
+        System.out.println("请输入要存款的金额");
+        // 输入存款金额
+        Scanner sc = new Scanner(System.in);
+        try {
+            double money = sc.nextDouble();
+            customerNow.setMoney(customerNow.getMoney() + money);
+            System.out.println("你当前的余额为：" + customerNow.getMoney());
+        } catch (Exception e) {
+            System.out.println("输入的金额不合法，请重新输入");
+            doSaveMoney();
+        }
+    }
+    // 转账
+    public void tranMoney() {
+        System.out.println("请输入的转账卡号");
+        Scanner scanner = new Scanner(System.in);
+        // 获取输入的转账卡号
+        String account = scanner.next();
+
+    }
+
+
+    //退卡（）
+    public void outCard() {
+        System.out.println("当前用户已退出！");
+        type = false;
+        System.exit(0);
+    }
+}
