@@ -1,6 +1,5 @@
-package com.hp.zy;
+package com.hp.zyy.Day06;
 
-import java.util.Scanner;
 /**
  * 1:输出字符串"HelloWorld"的字符串长度
  * 2:输出"HelloWorld"中"o"的位置

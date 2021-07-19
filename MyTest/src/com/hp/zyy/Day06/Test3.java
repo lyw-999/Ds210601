@@ -1,6 +1,4 @@
-package com.hp.zy;
-
-import java.util.Scanner;
+package com.hp.zyy.Day06;
 
 public class Test3 {
     public static void main(String[] args) {

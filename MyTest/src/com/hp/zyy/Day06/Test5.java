@@ -1,4 +1,4 @@
-package com.hp.zy;
+package com.hp.zyy.Day06;
 
 import java.util.Random;
 import java.util.Scanner;

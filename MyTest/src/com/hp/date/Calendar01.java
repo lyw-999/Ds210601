@@ -1,4 +1,4 @@
-package com.hp.datecollect;
+package com.hp.date;
 
 import java.util.Calendar;
 

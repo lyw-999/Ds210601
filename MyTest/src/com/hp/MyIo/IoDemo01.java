@@ -27,5 +27,10 @@ public class IoDemo01 {
         System.out.println("name = " + name);
         long lenth = file.length();
         System.out.println("lenth = " + lenth);
+        //文件删除
+        if (exists ) {
+            System.out.println("文件已存在 删除");
+            file.delete();
+        }
     }
 }
